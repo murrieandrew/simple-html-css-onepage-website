@@ -1,0 +1,387 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Seções gerais */
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #0066cc;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+/* Banner */
+#banner {
+    position: relative;
+    background-image: url('images/banner.jpg'); /* Ou 'images/fios-coloridos.jpg' */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 40px 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    min-height: 50vh;
+}
+
+#banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Overlay escuro */
+    z-index: 1;
+}
+
+#banner .content {
+    position: relative;
+    z-index: 2; /* Garante que o conteúdo fique acima da sobreposição */
+}
+
+/* Container do título com o ícone */
+.title-container {
+    display: flex;
+    flex-direction: column;  /* Alterado para empilhar o ícone e o título */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;               /* Espaço entre o ícone e o título */
+    position: relative;      /* Para poder posicionar o raio atrás do ícone */
+}
+
+/* Adiciona o raio atrás do ícone */
+.title-container::before {
+    content: "⚡";            /* Raio como símbolo de texto */
+    font-size: 60px;          /* Tamanho do raio */
+    position: absolute;
+    top: -70px;               /* Ajuste a posição do raio */
+    z-index: -1;              /* Coloca o raio atrás do ícone */
+    opacity: 0;               /* Inicialmente invisível */
+    animation: flash 1.5s infinite;  /* Animação de piscar */
+}
+
+/* Estilo do ícone */
+.banner-icon {
+    width: 60px; /* Tamanho do ícone */
+    height: 60px;
+    position: relative;   /* Para garantir que o ícone esteja acima do raio */
+}
+
+/* Animação de piscar do raio */
+@keyframes flash {
+    0%, 100% {
+        opacity: 0;         /* Começa e termina invisível */
+        transform: scale(0.9);  /* Pequeno */
+    }
+    50% {
+        opacity: 1;         /* Fica visível */
+        transform: scale(1.2);  /* Aumenta o tamanho */
+    }
+}
+
+/* Estilo do título */
+#banner h1 {
+    font-size: 2.2em;
+    margin-top: 20px;
+    margin-bottom: 30px; /* Espaçamento abaixo do título */
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra para melhorar a legibilidade */
+}
+
+
+/* Estilo do botão */
+#banner button {
+    background: linear-gradient(135deg, #ff8c00, #f5390a); /* Gradiente suave entre amarelo e laranja */
+    color: white;
+    border: 2px solid #ff6b6b;
+    padding: 18px 36px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#banner button:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c); /* Gradiente suave em tons de verde */
+    transform: translateY(-3px);
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
+}
+
+#banner button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.4);
+}
+
+
+/* Introdução */
+#introduction p {
+    font-size: 1.2em;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilo da seção de Serviços */
+#services {
+    background-color: #eef2f7;
+    padding-top: 40px;  /* Aumentei o padding superior para dar espaço ao título */
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;  /* Mantemos os serviços em coluna por padrão */
+    align-items: center;
+    text-align: center;
+}
+
+/* Título da seção de Serviços */
+#services h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px; /* Espaçamento abaixo do título */
+    color: #0066cc;
+    order: -1; /* Garante que o título fique acima dos serviços */
+}
+
+/* Estilo individual de cada serviço */
+.service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* Ajustes para as imagens dos serviços */
+.service img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+/* Ajustes de título e descrição */
+.service h3 {
+    font-size: 1.3em;
+    color: #333;
+}
+
+.service p {
+    font-size: 1em;
+    color: #666;
+    padding: 0 10px;
+}
+
+/* Responsividade - para telas menores */
+@media (max-width: 768px) {
+    #services {
+        flex-direction: column; /* Organiza os serviços em uma coluna */
+        align-items: center; /* Centraliza os serviços na tela */
+    }
+
+    .service {
+        max-width: 90%; /* Reduz a largura para melhor adaptação em telas pequenas */
+    }
+}
+
+/* Para telas maiores que 768px (Desktop) */
+@media (min-width: 769px) {
+    #services {
+        flex-direction: row; /* Organiza os serviços em linha */
+        justify-content: center; /* Centraliza os serviços */
+        flex-wrap: wrap; /* Permite que os serviços quebrem para a linha seguinte quando necessário */
+    }
+
+    .service {
+        margin: 20px;
+        max-width: 300px; /* Controle de largura */
+    }
+}
+
+
+/* Sobre */
+#about {
+    background-color: #fff;
+}
+
+#about h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #0066cc;
+}
+
+#about p {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Contato */
+
+/* Estilo da seção de Contato para centralizar o conteúdo */
+#contact {
+    background-color: #eef2f7;
+    padding: 40px 20px;
+    text-align: center;  /* Centraliza o conteúdo da seção */
+}
+
+#contact p {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.4;
+    max-width: 500px;
+    margin: 5px auto;
+}
+
+/* Estilo do botão de contato */
+#contact .whatsapp-button {
+    display: inline-flex;  /* Para garantir que o botão se comporte como um inline-flex e ocupe apenas o necessário */
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: #011107;  /* Cor do WhatsApp */
+    border: 2px solid #25d366; /* Borda verde do WhatsApp */
+    padding: 12px 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 350px;  /* Limita o tamanho máximo */
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto; /* Centraliza o botão horizontalmente */
+}
+
+#contact .whatsapp-button:hover {
+    background-color: #25d366;  /* Fundo verde quando hover */
+    color: white;  /* Texto branco ao passar o mouse */
+    transform: translateY(-3px);  /* Leve movimento para cima */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);  /* Aumenta a sombra */
+}
+
+/* Ícone do WhatsApp ao lado do texto */
+#contact .whatsapp-button img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;  /* Animação suave para o ícone */
+}
+
+/* Efeito de animação no ícone ao passar o mouse */
+#contact .whatsapp-button:hover img {
+    transform: scale(1.1);  /* Aumenta o ícone levemente ao passar o mouse */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #banner h1 {
+        font-size: 1.8em;
+    }
+
+    #banner button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .service img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .service h3 {
+        font-size: 1.2em;
+    }
+
+    #about p, #contact p {
+        font-size: 1em;
+    }
+}
+
+/* Acessibilidade e Feedback Visual */
+button:focus, button:hover, a:focus, a:hover {
+    outline: 3px solid #005bb5;
+    outline-offset: 2px;
+}
+
+button:active {
+    background-color: #004a9f;
+}
+
+/* Botão flutuante do WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;  /* Distância do rodapé */
+    right: 20px;  /* Distância da lateral esquerda */
+    z-index: 1000;  /* Garante que o botão fique acima de outros elementos */
+}
+
+.whatsapp-icon {
+    width: 60px;  /* Tamanho do ícone */
+    height: 60px;
+    border-radius: 50%;  /* Botão redondo */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);  /* Sombra para dar destaque */
+    background-color: #25d366;  /* Cor do WhatsApp */
+    padding: 10px;
+    transition: transform 0.3s ease;  /* Efeito suave ao passar o mouse */
+}
+
+.whatsapp-btn:hover .whatsapp-icon {
+    transform: scale(1.1);  /* Aumenta o botão levemente ao passar o mouse */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilo do ícone */
+img[src="images/eletricista (6).svg"] {
+    width: 60px;  /* 10% da largura da tela */ 
+}
+
+img[src="images/eletricista.svg"] {
+    width: 60px;  /* 10% da largura da tela */
+}
+
+
+
+
